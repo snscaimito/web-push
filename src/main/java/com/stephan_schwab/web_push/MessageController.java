@@ -22,9 +22,6 @@ import nl.martijndwars.webpush.PushService;
 public class MessageController {
   private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
 
-  private static final String PUBLIC_KEY = "BGByiWdMxciiNJkqcAzGoZpS4JHmhKZsjWXNvte52AqXd_8ACgNL2iFG6L-VLEq3vleg2bM8MuW7Hb3P85cA_Qo";
-  private static final String PRIVATE_KEY = "zQDqrROWVmzNCGwIoGn-2HyzVi15KhpziZ7gsMOVUBg";
-
   private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
   private PushService pushService;
@@ -32,8 +29,8 @@ public class MessageController {
   public MessageController() throws Exception {
     Security.addProvider(new BouncyCastleProvider());
     pushService = new PushService();
-    pushService.setPublicKey(PUBLIC_KEY);
-    pushService.setPrivateKey(PRIVATE_KEY);
+    pushService.setPublicKey(PublicPrivateKey.PUBLIC_KEY);
+    pushService.setPrivateKey(PublicPrivateKey.PRIVATE_KEY);
     pushService.setSubject("mailto:example_email@example.com");
   }
 
